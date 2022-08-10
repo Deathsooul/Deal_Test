@@ -8,7 +8,7 @@ WORKDIR /usr/app
 COPY package*.json ./
 COPY yarn.lock ./
 # Comando de execução
-RUN npm install
+RUN yarn install
 
 COPY . .
 
