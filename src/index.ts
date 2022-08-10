@@ -1,7 +1,9 @@
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import { routes } from './routes';
+import { db } from './config/sqlite';
 
+const port = 3000;
 const app = express();
 
 app.use(express.json());
@@ -20,4 +22,9 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
   });
 });
 
-app.listen(3000, () => console.info('Service running'));
+app.listen(port, async () => {
+  console.info('Starting...');
+  await db.sync();
+  console.info('Db Synced');
+  console.info(`Service linton on port ${port}`);
+});

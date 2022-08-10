@@ -4,6 +4,7 @@ const routes = Router();
 
 routes.get('/', () => {
   console.log('Hello World');
+
 });
 
 export { routes };
